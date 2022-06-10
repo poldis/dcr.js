@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"allowJs": true,
+		"declaration": false,
+		"rootDir": "src/",
+		"outDir": "dist/",
+		"lib": [
+			"es6",
+			"dom"
+		]
+	}
+}
