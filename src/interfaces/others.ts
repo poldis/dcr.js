@@ -1,14 +1,18 @@
+import Guilds from '../structures/Guilds';
+import Users from '../structures/Users';
+import DcrCache from 'dcr-cache';
+
 export interface BaseInterface {
 	id: Number;
 }
 
 export interface BaseClient {
-	guilds,
-	users,
-	topics,
-	pool,
-	redis,
-	cache
+	guilds: Guilds,
+	users: Users,
+	topics: any,
+	pool: any,
+	redis: any,
+	cache: DcrCache
 }
 
 export interface Topic extends BaseInterface {
