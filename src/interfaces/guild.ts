@@ -9,6 +9,6 @@ export interface Guild extends BaseInterface {
 	maxRevs: Number,
 }
 
-export interface GuildsInterface {
-	get(all: boolean, options: getOptions): Promise<Array<Guild>>;
+export interface GuildsClass {
+	get(id: String | Number, options: getOptions): Promise<Guild>;
 }

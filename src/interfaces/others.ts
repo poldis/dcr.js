@@ -21,7 +21,7 @@ export interface Topic extends BaseInterface {
 }
 
 export interface getOptions {
-	id?: string,
+	all?: boolean,
 	force?: boolean,
-	update?: boolean,
+	update?: boolean
 }

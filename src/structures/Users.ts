@@ -6,13 +6,13 @@ export default class Users {
 	constructor(private cache: DcrCache) {
 		this.cache = cache;
 	}
-	public async get(all: boolean, options: getOptions): Promise<Array<User>> {
+	public async get(id: String | Number, options: getOptions): Promise<Array<User>> {
 		const reqOpts = {
 			force: options?.force || false,
 			update: options?.update || true,
 		}
-		if (all) return await this.cache.getAll('user', "discordId", reqOpts);
-		if (options && options?.id) return await this.cache.get('user', options?.id, reqOpts);
-		throw new Error("Users.get() was run without an id or \"all\" parameter");
+		if (options?.all) return await this.cache.getAll('user', "discordId", reqOpts);
+		if (options && id) return await this.cache.get('user', id, reqOpts);
+		throw new Error("Users.get() was run without an id provided.");
 	}
 }

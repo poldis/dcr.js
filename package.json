@@ -1,6 +1,6 @@
 {
 	"name": "dcr-client",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"description": "A Wrapper for the DCR API, DB & Cache",
 	"main": "dist/index.js",
 	"author": "Leopold Scharlach",
@@ -13,10 +13,9 @@
 	"devDependencies": {
 		"@types/node": "^17.0.41"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/poldis/dcr-client.git"
+	"publishConfig": {
 	},
+	"repository": "git://github.com/poldis/dcr-client.git",
 	"bugs": {
 		"url": "https://github.com/poldis/dcr-client/issues"
 	},

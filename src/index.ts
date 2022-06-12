@@ -2,6 +2,7 @@ import { DcrCache } from 'dcr-cache';
 import { BaseClient, Topic } from './interfaces/others';
 import Guilds from './structures/Guilds';
 import Users from './structures/Users';
+import Revives from './structures/Revives';
 
 export default class Client implements BaseClient {
 	constructor(redis, db) {
@@ -9,6 +10,9 @@ export default class Client implements BaseClient {
 		this.redis = redis;
 		this.pool = db;
 		this.cache = new DcrCache({ redis, db });
+		this.guilds = new Guilds(this.cache);
+		this.users = new Users(this.cache);
+		this.revives = new Revives(this.cache)
 	}
 	public pool: any;
 	public redis: any;
@@ -16,12 +20,8 @@ export default class Client implements BaseClient {
 
 	public guilds: Guilds;
 	public users: Users;
-	public topics = this.getTopics()
-
-	public init() {
-		this.guilds = new Guilds(this.cache);
-		this.users = new Users(this.cache);
-	}
+	public revives: Revives;
+	public topics = this.getTopics();
 
 	private getTopics() { }
 }
