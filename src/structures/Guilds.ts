@@ -12,7 +12,11 @@ export default class Guilds implements GuildsClass {
 			update: options?.update || true,
 		}
 		// if (options?.all) return await this.cache.getAll('guild', "guildId", reqOpts);
-		if (options && id) return await this.cache.get('guild', id, reqOpts);
+		if (id) return await this.cache.get('guild', id, reqOpts);
 		throw new Error("Guilds.get() was run without an id provided.");
+	}
+	public async del(id: String | Number, options: getOptions): Promise<Boolean> {
+		if (id) return await this.cache.del('guild', id, options);
+		throw new Error("Guilds.del() was run without an id provided.");
 	}
 }

@@ -10,5 +10,6 @@ export interface Guild extends BaseInterface {
 }
 
 export interface GuildsClass {
-	get(id: String | Number, options: getOptions): Promise<Guild>;
+	get(id: String | Number, options: getOptions): Promise<Guild>,
+	del(id: String | Number, options: getOptions): Promise<Boolean>;
 }
