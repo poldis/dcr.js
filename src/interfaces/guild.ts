@@ -1,15 +1,11 @@
-import { BaseInterface, getOptions } from "./others";
+import { BaseInterface } from "./others";
+import type { Snowflake } from 'discord-api-types/globals';
 
-export interface Guild extends BaseInterface {
-	guildId: String,
+export interface DbGuild extends BaseInterface {
+	guildId: Snowflake,
 	lang: String,
 	premium: Number,
 	reviveMsgs: Number,
 	cmdsUsed: Number,
 	maxRevs: Number,
-}
-
-export interface GuildsClass {
-	get(id: String | Number, options: getOptions): Promise<Guild>,
-	del(id: String | Number, options: getOptions): Promise<Boolean>;
 }

@@ -1,20 +1,16 @@
 import { BaseInterface, getOptions } from "./others";
+import type { Snowflake } from 'discord-api-types/globals';
 
-export interface Revive extends BaseInterface {
-	guildId: String,
-	channelId: String,
-	role: String,
-	time: BigInt,
-	last: BigInt,
-	timezone: Number,
+export interface DbRevive extends BaseInterface {
+	guildId: Snowflake,
+	channelId: Snowflake,
+	role: null | Snowflake,
+	time: Number,
+	last: Number,
+	timezone: Number | String,
 	schedule: String,
-	night: String,
+	night: null | String,
 	lastMsgTime: String,
 	custom: String,
 	buttons: Number,
-}
-
-export interface RevivesClass {
-	get(id: String | Number, options: getOptions): Promise<Revive>,
-	del(id: String | Number, options: getOptions): Promise<Boolean>;
 }

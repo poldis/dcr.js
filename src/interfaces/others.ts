@@ -1,20 +1,22 @@
+import { DcrCache } from '../cache/index';
 import type { Pool } from "mysql";
 import type Redis from "ioredis";
 
-import Guilds from '../structures/Guilds';
-import Users from '../structures/Users';
-import DcrCache from 'dcr-cache';
+import GuildManager from '../structures/manager/GuildManager';
+import UserManager from '../structures/manager/UserManager';
+import ReviveManager from '../structures/manager/ReviveManager';
 
 export interface BaseInterface {
-	id: Number,
+	id: Number | null,
 }
 
 export interface BaseClient {
 	pool: Pool,
 	redis: Redis,
 	cache: DcrCache,
-	guilds: Guilds,
-	users: Users,
+	guilds: GuildManager,
+	users: UserManager,
+	revives: ReviveManager,
 }
 
 export interface Topic extends BaseInterface {
@@ -23,7 +25,21 @@ export interface Topic extends BaseInterface {
 }
 
 export interface getOptions {
-	all?: boolean,
-	force?: boolean,
-	update?: boolean,
+	update?: Boolean,
+	force?: Boolean,
+	customKey?: String | Boolean,
+	customWhere?: String | Boolean,
+}
+
+export interface Error {
+	success: boolean;
+	message?: string;
+	msg?: string;
+	code?: number;
+}
+
+export interface getQueryReturn {
+	query: String,
+	db: String,
+	key: String,
 }

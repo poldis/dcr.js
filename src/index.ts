@@ -1,3 +1,3 @@
-import DcrClient from './client';
+import Client from './client';
 
-export { DcrClient };
+export { Client };

@@ -1,11 +1,11 @@
-# dcr-client v1
-A Wrapper for the DCR API, DB & Cache using [node-fetch](https://www.npmjs.com/package/node-fetch), [mysql](https://www.npmjs.com/package/mysql) and [dcr-cache](https://www.npmjs.com/package/dcr-cache).  
+# dcr.js v1
+A Wrapper for the DCR API, DB & Cache.  
 
 ## Installation
 | Service | Command                  |
 |---------|--------------------------|
-| NPM     | `npm install dcr-client` |
-| YARN    | `yarn add dcr-client`    |
+| NPM     | `npm install dcr.js` |
+| YARN    | `yarn add dcr.js`    |
 
 ## Changelog
 ### v1.0.3

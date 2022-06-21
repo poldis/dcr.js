@@ -1,12 +1,12 @@
 {
-	"name": "dcr-client",
-	"version": "1.0.4",
+	"name": "dcr.js",
+	"version": "1.0.1",
 	"description": "A Wrapper for the DCR API, DB & Cache",
 	"main": "dist/index.js",
 	"author": "Leopold Scharlach",
 	"license": "MIT",
 	"dependencies": {
-		"dcr-cache": "^1.0.13",
+		"discord-api-types": "^0.34.0",
 		"ioredis": "^5.0.6",
 		"mysql": "^2.18.1",
 		"node-fetch": "^3.2.6",
@@ -16,9 +16,9 @@
 		"@types/node": "^17.0.41"
 	},
 	"publishConfig": {},
-	"repository": "git://github.com/poldis/dcr-client.git",
+	"repository": "git://github.com/poldis/dcr.js.git",
 	"bugs": {
-		"url": "https://github.com/poldis/dcr-client/issues"
+		"url": "https://github.com/poldis/dcr.js/issues"
 	},
-	"homepage": "https://github.com/poldis/dcr-client#readme"
+	"homepage": "https://github.com/poldis/dcr.js#readme"
 }
