@@ -7,8 +7,9 @@ import { DcrCache } from '../cache/index';
 import Guild from './Guild';
 
 export default class Revive {
-	constructor(private cache: DcrCache, data: DbRevive) {
+	constructor(private cache: DcrCache, private data: DbRevive) {
 		this.cache = cache;
+		this.data = data;
 		for (const [key, value] of Object.entries(data)) {
 			this[key] = value;
 		}
@@ -29,8 +30,9 @@ export default class Revive {
 	public async reviveSent(): Promise<DbRevive | null> {
 		await this.cache.db.query(`UPDATE stats SET uses = uses + 1 WHERE cmd = 'reviveMsgs'`);
 		const data: DbGuild = await this.cache.get('guild', this.guildId);
+		if (!data) return null;
 		const guild = new Guild(this.cache, data);
-		await guild.increaseCmdCount();
+		await guild.increaseReviveMsgCount();
 		return await this.cache.set('revive', this.channelId, `UPDATE revives SET last = ${Date.now()} WHERE channelId = ${this.channelId}`);
 	}
 	public async setRole(role: Snowflake): Promise<DbRevive | null> {
@@ -51,7 +53,7 @@ export default class Revive {
 		return await this.cache.set("revive", this.channelId, `UPDATE revives SET lastMsgTime = '${time}' WHERE channelId = '${this.channelId}'`);
 	}
 	public async setCustom(custom: String, buttons: Boolean): Promise<DbRevive | null> {
-		return await this.cache.set("revive", this.channelId, `UPDATE revives SET custom = ${custom}, buttons = ${buttons ? 1 : 0} WHERE channelId = '${this.channelId}'`);
+		return await this.cache.set("revive", this.channelId, `UPDATE revives SET custom = '${custom}', buttons = ${buttons ? 1 : 0} WHERE channelId = '${this.channelId}'`);
 	}
 	public async edit(data: Partial<DbRevive>, options: getOptions): Promise<DbRevive> {
 		return await this.cache.set("revive", data.channelId, `UPDATE revives SET 
