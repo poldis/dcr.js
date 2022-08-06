@@ -1,6 +1,8 @@
 import { getOptions } from "../../interfaces/others";
 
-export default async function (type: String, identifier: String, { update = true, force = false, customKey = false, customWhere = false }: getOptions): Promise<any> {
+export default async function (type: String, identifier: String, options: getOptions): Promise<any> {
+	if (!options) options = { update: true, force: false, customKey: false, customWhere: false };
+	const { update = true, force = false, customKey = false, customWhere = false } = options;
 	const redisRes = !force ? JSON.parse(await this.redis.get(`${type}_${identifier}`)) : null;
 	if (redisRes) return redisRes;
 
