@@ -24,7 +24,6 @@ export default class Revive {
 	public schedule: String
 	public night: null | String
 	public lastMsgTime: String
-	public custom: Number
 
 	public async reviveSent(): Promise<DbRevive | null> {
 		await this.cache.db.query(`UPDATE stats SET uses = uses + 1 WHERE cmd = 'reviveMsgs'`);
