@@ -11,6 +11,12 @@ export interface DbRevive extends BaseInterface {
 	schedule: String,
 	night: null | String,
 	lastMsgTime: String,
-	custom: String,
+	custom: Number,
+}
+
+export interface DbCustom extends BaseInterface {
+	reviveId: Number,
+	embed: String,
 	buttons: Number,
+	tcol: Number,
 }

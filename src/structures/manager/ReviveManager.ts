@@ -26,6 +26,6 @@ export default class ReviveManager {
 		return null;
 	}
 	public async new(data: DbRevive, options: getOptions): Promise<DbRevive> {
-		return await this.cache.set("revive", data.channelId, `INSERT INTO revives VALUES (${data.id}, '${data.guildId}', '${data.channelId}', ${data.role ? data.role.toString() : null}, ${data.time}, ${data.last}, '${data.timezone}', '${data.schedule}', ${data.night}, DEFAULT, '${data.custom}', ${data.buttons})`, options);
+		return await this.cache.set("revive", data.channelId, `INSERT INTO revives VALUES (${data.id}, '${data.guildId}', '${data.channelId}', ${data.role ? data.role.toString() : null}, ${data.time}, ${data.last}, '${data.timezone}', '${data.schedule}', ${data.night}, DEFAULT, 0)`, options);
 	}
 }

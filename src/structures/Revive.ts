@@ -24,8 +24,7 @@ export default class Revive {
 	public schedule: String
 	public night: null | String
 	public lastMsgTime: String
-	public custom: String
-	public buttons: Number
+	public custom: Number
 
 	public async reviveSent(): Promise<DbRevive | null> {
 		await this.cache.db.query(`UPDATE stats SET uses = uses + 1 WHERE cmd = 'reviveMsgs'`);
@@ -51,9 +50,6 @@ export default class Revive {
 	}
 	public async setLastMsgTime(time: Number): Promise<DbRevive | null> {
 		return await this.cache.set("revive", this.channelId, `UPDATE revives SET lastMsgTime = '${time}' WHERE channelId = '${this.channelId}'`);
-	}
-	public async setCustom(custom: String, buttons: Boolean): Promise<DbRevive | null> {
-		return await this.cache.set("revive", this.channelId, `UPDATE revives SET custom = '${custom}', buttons = ${buttons ? 1 : 0} WHERE channelId = '${this.channelId}'`);
 	}
 	public async edit(data: Partial<DbRevive>, options: getOptions): Promise<DbRevive> {
 		return await this.cache.set("revive", data.channelId, `UPDATE revives SET 
