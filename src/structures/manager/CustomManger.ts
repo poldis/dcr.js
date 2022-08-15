@@ -24,6 +24,6 @@ export default class CustomManager {
 		return await this.cache.del('custom', id, options);
 	}
 	public async new(data: DbCustom, options: getOptions): Promise<DbCustom> {
-		return await this.cache.set("custom", data.reviveId, `INSERT INTO custom VALUES (${data.id || 'NULL'}, ${data.reviveId}, '${data.embed}', ${data.buttons}, ${data.tcol})`, options);
+		return await this.cache.set("custom", data.reviveId, `INSERT INTO custom VALUES (${data.id}, ${data.reviveId}, '${data.embed}', ${data.buttons}, ${data.tcol})`, options);
 	}
 }
