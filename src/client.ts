@@ -7,7 +7,7 @@ import UserManager from './structures/manager/UserManager';
 
 import type { Pool } from "mysql";
 import type Redis from "ioredis";
-import CustomManager from './structures/manager/CustomManger';
+import CustomManager from './structures/manager/CustomManager';
 
 export default class Client implements BaseClient {
 	constructor(redis: Redis, db: Pool) {
