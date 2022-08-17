@@ -15,7 +15,7 @@ export class DcrCache {
 		this.set = set.bind(this);
 		this.del = del.bind(this);
 	}
-	
+
 	public redis: Redis;
 	public db: Pool;
 	public get: Function | null;
@@ -34,6 +34,10 @@ export class DcrCache {
 			case "guild":
 				db = "server";
 				key = "guildId"
+				break;
+			case "custom":
+				db = "custom";
+				key = "reviveId"
 				break;
 			default:
 				db = type;
