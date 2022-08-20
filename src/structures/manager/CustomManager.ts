@@ -4,11 +4,15 @@ import { DbCustom } from "../../interfaces/revive";
 import { DcrCache } from '../../cache/index';
 import Custom from '../Custom';
 
+interface getOptionsCustom extends getOptions {
+	defaultValues: Boolean;
+}
+
 export default class CustomManager {
 	constructor(private cache: DcrCache) {
 		this.cache = cache;
 	}
-	public async get(id: Number, options: getOptions): Promise<DbCustom> {
+	public async get(id: Number, options: getOptionsCustom): Promise<DbCustom> {
 		const reqOpts = {
 			force: options?.force || false,
 			update: options?.update || true,
@@ -16,13 +20,14 @@ export default class CustomManager {
 		if (!id) return null;
 
 		const data: DbCustom = await this.cache.get('custom', id, reqOpts);
-		if (!data) return {
+		if (!data && options?.defaultValues == false) return null; 
+		else if (!data) return {
 			id: null,
 			reviveId: id,
 			embed: "standard",
 			buttons: 1,
 			tcol: 0,
-		};
+		}
 		return new Custom(this.cache, data);
 	}
 	public async del(id: Number, options: getOptions): Promise<Boolean> {

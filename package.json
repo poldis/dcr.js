@@ -1,6 +1,6 @@
 {
 	"name": "dcr.js",
-	"version": "1.0.4",
+	"version": "1.0.6",
 	"description": "A Wrapper for the DCR API, DB & Cache",
 	"main": "dist/index.js",
 	"author": "Leopold Scharlach",
@@ -9,7 +9,7 @@
 		"discord-api-types": "^0.34.0",
 		"ioredis": "^5.0.6",
 		"mysql": "^2.18.1",
-		"node-fetch": "^3.2.6",
+		"node-fetch": "^2.6.7",
 		"util": "^0.12.4"
 	},
 	"devDependencies": {
