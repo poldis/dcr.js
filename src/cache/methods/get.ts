@@ -1,4 +1,4 @@
-import { getOptions } from "../../interfaces/others";
+import { getOptions } from "../../client/structures/interfaces/others";
 
 export default async function (type: String, identifier: String, options: getOptions): Promise<any> {
 	if (!options) options = { update: true, force: false, customKey: false, customWhere: false };

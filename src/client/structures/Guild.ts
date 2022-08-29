@@ -1,6 +1,9 @@
-import { DcrCache } from '../cache/index';
-import { DbGuild } from "../interfaces/guild";
+import { DcrCache } from '../../cache/index';
+import { DbGuild } from "./interfaces/guild";
 import type { Snowflake } from 'discord-api-types/globals';
+
+import { DcrApi } from '../../api';
+import { BASE_API_URL } from '../../utils/constants';
 
 export default class Guild {
 	constructor(private cache: DcrCache, data: DbGuild) {
@@ -8,7 +11,10 @@ export default class Guild {
 		for (const [key, value] of Object.entries(data)) {
 			this[key] = value;
 		}
+		this.api = new DcrApi(BASE_API_URL);
 	}
+	private api: DcrApi;
+
 	public id: Number;
 	public guildId: Snowflake;
 	public lang: String;
@@ -32,5 +38,8 @@ export default class Guild {
 	}
 	public async setPremium(premium: Boolean): Promise<DbGuild> {
 		return await this.cache.set('guild', this.guildId, `UPDATE server SET premium = '${premium ? 1 : 0}' WHERE guildId = '${this.guildId}'`);
+	}
+	public async clear(): Promise<any> {
+		return await this.api.endpoints.clear();
 	}
 }

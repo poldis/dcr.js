@@ -1,7 +1,7 @@
-import { getOptions } from '../../interfaces/others';
-import { DbRevive } from '../../interfaces/revive';
+import { getOptions } from '../interfaces/others';
+import { DbRevive } from '../interfaces/revive';
 
-import { DcrCache } from '../../cache/index';
+import { DcrCache } from '../../../cache/index';
 import Revive from '../Revive';
 
 

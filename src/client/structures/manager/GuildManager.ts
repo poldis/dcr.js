@@ -1,7 +1,7 @@
-import { getOptions } from '../../interfaces/others';
-import { DbGuild } from "../../interfaces/guild";
+import { getOptions } from '../interfaces/others';
+import { DbGuild } from "../interfaces/guild";
 
-import { DcrCache } from '../../cache/index';
+import { DcrCache } from '../../../cache/index';
 import Guild from '../Guild';
 
 export default class GuildManager {

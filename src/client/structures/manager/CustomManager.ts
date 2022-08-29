@@ -1,7 +1,7 @@
-import { getOptions } from '../../interfaces/others';
-import { DbCustom } from "../../interfaces/revive";
+import { getOptions } from '../interfaces/others';
+import { DbCustom } from "../interfaces/revive";
 
-import { DcrCache } from '../../cache/index';
+import { DcrCache } from '../../../cache/index';
 import Custom from '../Custom';
 
 interface getOptionsCustom extends getOptions {

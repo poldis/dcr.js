@@ -1,4 +1,4 @@
-import { getOptions, getQueryReturn } from "../interfaces/others";
+import { getOptions, getQueryReturn } from "../client/structures/interfaces/others";
 import get from "./methods/get";
 import set from "./methods/set";
 import del from "./methods/delete";

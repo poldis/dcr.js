@@ -1,9 +1,9 @@
-import { DbRevive } from "../interfaces/revive";
-import { DbGuild } from "../interfaces/guild";
-import { Error, getOptions } from "../interfaces/others";
+import { DbRevive } from "./interfaces/revive";
+import { DbGuild } from "./interfaces/guild";
+import { Error, getOptions } from "./interfaces/others";
 import type { Snowflake } from 'discord-api-types/globals';
 
-import { DcrCache } from '../cache/index';
+import { DcrCache } from '../../cache/index';
 import Guild from './Guild';
 
 export default class Revive {

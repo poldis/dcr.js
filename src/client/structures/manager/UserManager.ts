@@ -1,6 +1,6 @@
-import { getOptions } from '../../interfaces/others';
-import { User } from '../../interfaces/user';
-import { DcrCache } from '../../cache/index';
+import { getOptions } from '../interfaces/others';
+import { User } from '../interfaces/user';
+import { DcrCache } from '../../../cache/index';
 
 export default class UserManager {
 	constructor(private cache: DcrCache) {

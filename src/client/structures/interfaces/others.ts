@@ -1,10 +1,11 @@
-import { DcrCache } from '../cache/index';
+import { DcrCache } from '../../../cache/index';
+import { DcrApi } from '../../../api/index';
 import type { Pool } from "mysql";
 import type Redis from "ioredis";
 
-import GuildManager from '../structures/manager/GuildManager';
-import UserManager from '../structures/manager/UserManager';
-import ReviveManager from '../structures/manager/ReviveManager';
+import GuildManager from '../manager/GuildManager';
+import UserManager from '../manager/UserManager';
+import ReviveManager from '../manager/ReviveManager';
 
 export interface BaseInterface {
 	id: Number | null,
@@ -14,6 +15,7 @@ export interface BaseClient {
 	pool: Pool,
 	redis: Redis,
 	cache: DcrCache,
+	api: DcrApi,
 	guilds: GuildManager,
 	users: UserManager,
 	revives: ReviveManager,

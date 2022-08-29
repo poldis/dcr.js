@@ -1,5 +1,5 @@
-import { DcrCache } from '../cache/index';
-import { DbCustom } from "../interfaces/revive";
+import { DcrCache } from '../../cache/index';
+import { DbCustom } from "./interfaces/revive";
 
 export default class Custom {
 	constructor(private cache: DcrCache, data: DbCustom) {
