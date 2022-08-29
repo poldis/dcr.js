@@ -8,6 +8,9 @@ A Wrapper for the DCR API, DB & Cache.
 | YARN    | `yarn add dcr.js`    |
 
 ## Changelog
+### v1.0.7
+* API support added
+
 ### v1.0.3
 * Added support for revives (`<Client>.revives#get()`)
 * Removed `getAll` from all `get`s
