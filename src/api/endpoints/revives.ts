@@ -2,8 +2,10 @@ import { Snowflake } from "discord-api-types/globals";
 import { DbRevive } from "../../client/structures/interfaces/revive";
 import { ApiResponse } from "../interfaces/others";
 
+import fetch from "node-fetch";
+
 export default class ApiRevives {
-	constructor(private ENDPOINTS_API_URL: URL) {
+	constructor(private ENDPOINTS_API_URL: String) {
 		this.ENDPOINTS_API_URL = ENDPOINTS_API_URL;
 	}
 
@@ -33,7 +35,7 @@ export default class ApiRevives {
 	}
 
 	private async fetchApiEndpoint(endpoint: string, options: { method?: string, headers?: any, body?: any }): Promise<any> {
-		return await fetch(new URL(this.ENDPOINTS_API_URL + endpoint), {
+		return await fetch(this.ENDPOINTS_API_URL + endpoint, {
 			method: options?.method || "GET",
 			headers: options?.headers,
 			body: options?.body
