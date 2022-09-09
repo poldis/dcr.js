@@ -40,6 +40,6 @@ export default class Guild {
 		return await this.cache.set('guild', this.guildId, `UPDATE server SET premium = '${premium ? 1 : 0}' WHERE guildId = '${this.guildId}'`);
 	}
 	public async clear(): Promise<any> {
-		return await this.api.endpoints.clear(this.id);
+		return await this.api.endpoints.clear(this.guildId);
 	}
 }
