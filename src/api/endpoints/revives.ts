@@ -5,7 +5,7 @@ import { ApiResponse } from "../interfaces/others";
 import fetch from "node-fetch";
 
 export default class ApiRevives {
-	constructor(private ENDPOINTS_API_URL: String) {
+	constructor(private ENDPOINTS_API_URL: String, private API_KEY: String) {
 		this.ENDPOINTS_API_URL = ENDPOINTS_API_URL;
 	}
 
@@ -35,9 +35,12 @@ export default class ApiRevives {
 	}
 
 	private async fetchApiEndpoint(endpoint: string, options: { method?: string, headers?: any, body?: any }): Promise<any> {
+		if (options?.headers) options.headers["X-Api-Key"] = this.API_KEY;
+		else options.headers = { "X-Api-Key": this.API_KEY };
+
 		return await fetch(this.ENDPOINTS_API_URL + endpoint, {
 			method: options?.method || "GET",
-			headers: options?.headers,
+			headers: options.headers,
 			body: options?.body
 		});
 	}

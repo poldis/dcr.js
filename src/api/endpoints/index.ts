@@ -12,7 +12,7 @@ export class DcrApiEndpoints {
 
 		this.clear = clear.bind(this);
 		this.lang = lang.bind(this);
-		this.revives = new ApiRevives(ENDPOINTS_API_URL);
+		this.revives = new ApiRevives(ENDPOINTS_API_URL, API_KEY);
 	}
 
 	private ENDPOINTS_API_URL: String;
