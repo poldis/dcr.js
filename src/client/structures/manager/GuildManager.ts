@@ -5,7 +5,7 @@ import { DcrCache } from '../../../cache/index';
 import Guild from '../Guild';
 
 export default class GuildManager {
-	constructor(private cache: DcrCache) {
+	constructor(private cache: DcrCache, private API_KEY: string) {
 		this.cache = cache;
 	}
 	public async get(id: String | Number, options: getOptions): Promise<Guild> {
@@ -18,7 +18,7 @@ export default class GuildManager {
 		
 		const data: DbGuild = await this.cache.get('guild', id, reqOpts);
 		if (!data) return null;
-		return new Guild(this.cache, data);
+		return new Guild(this.cache, this.API_KEY, data);
 	}
 	public async del(id: String | Number, options: getOptions): Promise<Boolean> {
 		if (id) return await this.cache.del('guild', id, options);

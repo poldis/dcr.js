@@ -23,9 +23,9 @@ export default class Client implements BaseClient {
 		this.cache = new DcrCache(redis, db);
 		this.api = new DcrApi(BASE_API_URL, apiKey);
 
-		this.guilds = new GuildManager(this.cache);
+		this.guilds = new GuildManager(this.cache, apiKey);
 		this.users = new UserManager(this.cache);
-		this.revives = new ReviveManager(this.cache)
+		this.revives = new ReviveManager(this.cache, apiKey)
 		this.customs = new CustomManager(this.cache)
 	}
 

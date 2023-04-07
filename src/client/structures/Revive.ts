@@ -7,7 +7,7 @@ import { DcrCache } from '../../cache/index';
 import Guild from './Guild';
 
 export default class Revive {
-	constructor(private cache: DcrCache, private data: DbRevive) {
+	constructor(private cache: DcrCache, private API_KEY, private data: DbRevive) {
 		this.cache = cache;
 		this.data = data;
 		for (const [key, value] of Object.entries(data)) {
@@ -29,14 +29,14 @@ export default class Revive {
 		await this.cache.db.query(`UPDATE stats SET uses = uses + 1 WHERE cmd = 'reviveMsgs'`);
 		const data: DbGuild = await this.cache.get('guild', this.guildId);
 		if (!data) return null;
-		const guild = new Guild(this.cache, data);
+		const guild = new Guild(this.cache, this.API_KEY, data);
 		await guild.increaseReviveMsgCount();
 		return await this.cache.set('revive', this.channelId, `UPDATE revives SET last = ${Date.now()} WHERE channelId = ${this.channelId}`);
 	}
 	public async setRole(role: Snowflake): Promise<DbRevive | null> {
 		return await this.cache.set('revive', this.channelId, `UPDATE revives SET role = ${role} WHERE channelId = ${this.channelId}`);
 	}
-	public async setTime(time: Number): Promise<DbRevive | null | Error> {
+	public async setTime(time: number): Promise<DbRevive | null | Error> {
 		if ((time < 5400000 || time > 604800000) && this.role) return { success: false, code: 3112 };
 
 		if (time < 3600000 || time > 604800000) return { success: false, code: 3111 };

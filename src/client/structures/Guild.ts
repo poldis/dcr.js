@@ -6,12 +6,12 @@ import { DcrApi } from '../../api';
 import { BASE_API_URL } from '../../utils/constants';
 
 export default class Guild {
-	constructor(private cache: DcrCache, data: DbGuild) {
+	constructor(private cache: DcrCache, API_KEY: string, data: DbGuild) {
 		this.cache = cache;
 		for (const [key, value] of Object.entries(data)) {
 			this[key] = value;
 		}
-		this.api = new DcrApi(BASE_API_URL);
+		this.api = new DcrApi(BASE_API_URL, API_KEY);
 	}
 	private api: DcrApi;
 

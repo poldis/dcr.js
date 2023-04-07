@@ -6,7 +6,7 @@ import Revive from '../Revive';
 
 
 export default class ReviveManager {
-	constructor(private cache: DcrCache) {
+	constructor(private cache: DcrCache, private API_KEY) {
 		this.cache = cache;
 	}
 	public async get(id: String | Number, options: getOptions): Promise<Revive> {
@@ -19,7 +19,7 @@ export default class ReviveManager {
 
 		const data: DbRevive = await this.cache.get('revive', id, reqOpts);
 		if (!data) return null;
-		return new Revive(this.cache, data);
+		return new Revive(this.cache, this.API_KEY, data);
 	}
 	public async del(id: String | Number, options: getOptions): Promise<Boolean> {
 		if (id) return await this.cache.del('revive', id, options);
