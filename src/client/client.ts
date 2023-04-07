@@ -13,12 +13,15 @@ import { BaseClient } from './structures/interfaces/others';
 import { BASE_API_URL } from '../utils/constants';
 
 export default class Client implements BaseClient {
-	constructor(redis: Redis, db: Pool) {
-		if (!redis || !db) throw new Error("Invalid parameters passed to dcr.js constructor");
+	constructor(redis: Redis, db: Pool, apiKey: string) {
+		if (!redis) throw new Error("No Redis client provided (1. parameter)");
+		if (!db) throw new Error("No MySQL pool provided (2. parameter)");
+		if (!apiKey) throw new Error("No API key provided (3. parameter)");
+
 		this.redis = redis;
 		this.pool = db;
 		this.cache = new DcrCache(redis, db);
-		this.api = new DcrApi(BASE_API_URL);
+		this.api = new DcrApi(BASE_API_URL, apiKey);
 
 		this.guilds = new GuildManager(this.cache);
 		this.users = new UserManager(this.cache);
