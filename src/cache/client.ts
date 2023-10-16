@@ -39,6 +39,10 @@ export class DcrCache {
 				db = "custom";
 				key = "reviveId"
 				break;
+			case "user":
+				db = "users";
+				key = "discordId"
+				break;
 			default:
 				db = type;
 				key = "id";
