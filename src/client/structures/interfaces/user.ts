@@ -5,4 +5,12 @@ export interface User extends BaseInterface {
 	discordId: Snowflake,
 	email: String,
 	autoJoin: Number,
+	timezone: Number,
+}
+
+export interface DbUser extends BaseInterface {
+	discordId: Snowflake,
+	email: String,
+	autoJoin: Number,
+	timezone: Number,
 }

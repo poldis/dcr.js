@@ -8,6 +8,9 @@ A Wrapper for the DCR API, DB & Cache.
 | YARN    | `yarn add dcr.js`    |
 
 ## Changelog
+### v1.0.14
+* added `users` to cache
+
 ### v1.0.7
 * API support added
 
