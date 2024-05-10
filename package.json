@@ -5,6 +5,20 @@
 	"main": "dist/index.js",
 	"author": "Leopold Scharlach",
 	"license": "MIT",
+	"scripts": {
+		"format:check": "prettier ./src --check",
+		"format:write": "prettier ./src --write",
+		"lint:check": "eslint ./src/**",
+		"lint:fix": "eslint --fix",
+		"precommit": "npm run format:write && npm run lint:fix",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"src/**": [
+			"prettier ./src --write",
+			"eslint --fix"
+		]
+	},
 	"dependencies": {
 		"discord-api-types": "^0.34.0",
 		"ioredis": "^5.0.6",
@@ -13,7 +27,16 @@
 		"util": "^0.12.4"
 	},
 	"devDependencies": {
-		"@types/node": "^17.0.41"
+		"@eslint/js": "^9.2.0",
+		"@types/node": "^17.0.41",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"globals": "^15.2.0",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.2",
+		"prettier": "3.2.5",
+		"typescript": "^5.4.5",
+		"typescript-eslint": "^7.8.0"
 	},
 	"publishConfig": {},
 	"repository": "git://github.com/poldis/dcr.js.git",
