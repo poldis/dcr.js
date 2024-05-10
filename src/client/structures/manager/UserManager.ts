@@ -32,12 +32,11 @@ export default class UserManager {
 		if (id) return await this.cache.del('user', id, options);
 		throw new Error('UserManager.del() was run without an id provided.');
 	}
-	public async new(data: DbUser, options: getOptions): Promise<DbUser> {
+	public async new(data: DbUser): Promise<DbUser> {
 		return await this.cache.set(
 			'user',
 			data.discordId,
-			`INSERT INTO users VALUES (${data.id}, '${data.discordId}', '${data.email}', ${data.autoJoin}, ${data.timezone})`,
-			options
+			`INSERT INTO users VALUES (${data.id}, '${data.discordId}', '${data.email}', ${data.autoJoin}, ${data.timezone})`
 		);
 	}
 }

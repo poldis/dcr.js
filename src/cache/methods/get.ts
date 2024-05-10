@@ -3,7 +3,7 @@ import { getOptions } from '../../client/structures/types/others';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function (
 	type: string,
-	identifier: string,
+	identifier: number | string,
 	options: getOptions
 ): Promise<any> {
 	if (!options)

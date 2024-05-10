@@ -1,3 +1,3 @@
-import { DcrApi } from "./client"
+import { DcrApi } from './client';
 
 export { DcrApi };

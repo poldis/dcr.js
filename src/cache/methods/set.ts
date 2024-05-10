@@ -1,12 +1,12 @@
 import type { MysqlError } from 'mysql';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function (
 	type: string,
-	identifier: string,
+	identifier: number | string,
 	query: string,
 	params: Array<string> = []
 ): Promise<any> {
+	// eslint-disable-line @typescript-eslint/no-explicit-any
 	await this.db.query(query, params).catch((err: MysqlError) => {
 		console.error(err);
 	});

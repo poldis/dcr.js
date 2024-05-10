@@ -2,7 +2,7 @@ import { getOptions } from '../../client/structures/types/others';
 
 export default async function del(
 	type: string,
-	identifier: string,
+	identifier: number | string,
 	options: getOptions
 ): Promise<boolean> {
 	if (!options)

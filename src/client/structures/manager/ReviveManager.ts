@@ -33,12 +33,11 @@ export default class ReviveManager {
 		if (id) return await this.cache.del('revive', id, options);
 		return null;
 	}
-	public async new(data: DbRevive, options: getOptions): Promise<DbRevive> {
+	public async new(data: DbRevive): Promise<DbRevive> {
 		return await this.cache.set(
 			'revive',
 			data.channelId,
-			`INSERT INTO revives VALUES (${data.id}, '${data.guildId}', '${data.channelId}', ${data.role ? data.role.toString() : null}, ${data.time}, ${data.last}, '${data.timezone}', '${data.schedule}', ${data.night}, DEFAULT)`,
-			options
+			`INSERT INTO revives VALUES (${data.id}, '${data.guildId}', '${data.channelId}', ${data.role ? data.role.toString() : null}, ${data.time}, ${data.last}, '${data.timezone}', '${data.schedule}', ${data.night}, DEFAULT)`
 		);
 	}
 }

@@ -30,12 +30,11 @@ export default class GuildManager {
 		if (id) return await this.cache.del('guild', id, options);
 		return null;
 	}
-	public async new(data: DbGuild, options: getOptions): Promise<DbGuild> {
+	public async new(data: DbGuild): Promise<DbGuild> {
 		return await this.cache.set(
 			'guild',
 			data.guildId,
-			`INSERT INTO server VALUES (${data.id}, '${data.guildId}', '${data.lang}', '${data.premium}', ${data.reviveMsgs}, ${data.cmdsUsed}, ${data.maxRevs})`,
-			options
+			`INSERT INTO server VALUES (${data.id}, '${data.guildId}', '${data.lang}', '${data.premium}', ${data.reviveMsgs}, ${data.cmdsUsed}, ${data.maxRevs})`
 		);
 	}
 }

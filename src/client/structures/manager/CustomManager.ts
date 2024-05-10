@@ -35,12 +35,11 @@ export default class CustomManager {
 		if (!id) return null;
 		return await this.cache.del('custom', id, options);
 	}
-	public async new(data: DbCustom, options: getOptions): Promise<DbCustom> {
+	public async new(data: DbCustom): Promise<DbCustom> {
 		return await this.cache.set(
 			'custom',
 			data.reviveId,
-			`INSERT INTO custom VALUES (${data.id}, ${data.reviveId}, '${data.embed}', ${data.buttons}, ${data.tcol})`,
-			options
+			`INSERT INTO custom VALUES (${data.id}, ${data.reviveId}, '${data.embed}', ${data.buttons}, ${data.tcol})`
 		);
 	}
 }

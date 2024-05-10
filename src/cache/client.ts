@@ -21,27 +21,26 @@ export class DcrCache {
 
 	public redis: Redis;
 	public db: Pool;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 	public get:
 		| ((
 				type: string,
-				identifier: string,
+				identifier: number | string,
 				options?: getOptions
-		  ) => Promise<any>)
+		  ) => Promise<any>) // eslint-disable-line @typescript-eslint/no-explicit-any
 		| null;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	public set:
 		| ((
 				type: string,
-				identifier: string,
+				identifier: number | string,
 				query: string,
 				params?: Array<string>
-		  ) => Promise<any>)
+		  ) => Promise<any>) // eslint-disable-line @typescript-eslint/no-explicit-any
 		| null;
 	public del:
 		| ((
 				type: string,
-				identifier: string,
+				identifier: number | string,
 				options?: getOptions
 		  ) => Promise<boolean>)
 		| null;

@@ -1,3 +1,3 @@
-import { DcrCache } from "./client"
+import { DcrCache } from './client';
 
 export { DcrCache };
