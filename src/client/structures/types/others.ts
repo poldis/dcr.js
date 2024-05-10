@@ -1,36 +1,36 @@
 import { DcrCache } from '../../../cache/index';
 import { DcrApi } from '../../../api/index';
-import type { Pool } from "mysql";
-import type Redis from "ioredis";
+import type { Pool } from 'mysql';
+import type Redis from 'ioredis';
 
 import GuildManager from '../manager/GuildManager';
 import UserManager from '../manager/UserManager';
 import ReviveManager from '../manager/ReviveManager';
 
 export interface BaseInterface {
-	id: Number | null,
+	id: number | null;
 }
 
 export interface BaseClient {
-	pool: Pool,
-	redis: Redis,
-	cache: DcrCache,
-	api: DcrApi,
-	guilds: GuildManager,
-	users: UserManager,
-	revives: ReviveManager,
+	pool: Pool;
+	redis: Redis;
+	cache: DcrCache;
+	api: DcrApi;
+	guilds: GuildManager;
+	users: UserManager;
+	revives: ReviveManager;
 }
 
 export interface Topic extends BaseInterface {
-	groupId: Number,
-	content: String,
+	groupId: number;
+	content: string;
 }
 
 export interface getOptions {
-	update?: Boolean,
-	force?: Boolean,
-	customKey?: String | Boolean,
-	customWhere?: String | Boolean,
+	update?: boolean;
+	force?: boolean;
+	customKey?: string | boolean;
+	customWhere?: string | boolean;
 }
 
 export interface Error {
@@ -41,7 +41,7 @@ export interface Error {
 }
 
 export interface getQueryReturn {
-	query: String,
-	db: String,
-	key: String,
+	query: string;
+	db: string;
+	key: string;
 }

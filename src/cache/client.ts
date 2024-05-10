@@ -1,13 +1,16 @@
-import { getOptions, getQueryReturn } from "../client/structures/interfaces/others";
-import get from "./methods/get";
-import set from "./methods/set";
-import del from "./methods/delete";
-import type { Pool } from "mysql";
-import type Redis from "ioredis";
+import { getOptions, getQueryReturn } from '../client/structures/types/others';
+import get from './methods/get';
+import set from './methods/set';
+import del from './methods/delete';
+import type { Pool } from 'mysql';
+import type Redis from 'ioredis';
 
 export class DcrCache {
 	constructor(redis: Redis, db: Pool) {
-		if (!redis || !db) throw new Error("Invalid parameters passed to DcrCache constructor");
+		if (!redis || !db)
+			throw new Error(
+				'Invalid parameters passed to DcrCache constructor'
+			);
 		this.redis = redis;
 		this.db = db;
 
@@ -18,39 +21,67 @@ export class DcrCache {
 
 	public redis: Redis;
 	public db: Pool;
-	public get: Function | null;
-	public set: Function | null;
-	public del: Function | null;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public get:
+		| ((
+				type: string,
+				identifier: string,
+				options?: getOptions
+		  ) => Promise<any>)
+		| null;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	public set:
+		| ((
+				type: string,
+				identifier: string,
+				query: string,
+				params?: Array<string>
+		  ) => Promise<any>)
+		| null;
+	public del:
+		| ((
+				type: string,
+				identifier: string,
+				options?: getOptions
+		  ) => Promise<boolean>)
+		| null;
 
-	private getQuery(type: String, identifier: String, customKey: String | Boolean, customWhere: String | Boolean): getQueryReturn {
-		let query: String = "";
-		let db: String = "";
-		let key: String = "";
+	private getQuery(
+		type: string,
+		identifier: string,
+		customKey: string | boolean,
+		customWhere: string | boolean
+	): getQueryReturn {
+		let query: string = '';
+		let db: string = '';
+		let key: string = '';
 		switch (type) {
-			case "revive":
-				db = "revives";
-				key = "channelId";
+			case 'revive':
+				db = 'revives';
+				key = 'channelId';
 				break;
-			case "guild":
-				db = "server";
-				key = "guildId"
+			case 'guild':
+				db = 'server';
+				key = 'guildId';
 				break;
-			case "custom":
-				db = "custom";
-				key = "reviveId"
+			case 'custom':
+				db = 'custom';
+				key = 'reviveId';
 				break;
-			case "user":
-				db = "users";
-				key = "discordId"
+			case 'user':
+				db = 'users';
+				key = 'discordId';
 				break;
 			default:
 				db = type;
-				key = "id";
+				key = 'id';
 				break;
 		}
 		if (customWhere) query = `SELECT * FROM ${db} ${customWhere}`;
-		if (!customWhere && customKey) query = `SELECT * FROM ${db} WHERE ${customKey} = '${identifier}'`;
-		if (!customWhere && !customKey) query = `SELECT * FROM ${db} WHERE ${key} = '${identifier}'`;
+		if (!customWhere && customKey)
+			query = `SELECT * FROM ${db} WHERE ${customKey} = '${identifier}'`;
+		if (!customWhere && !customKey)
+			query = `SELECT * FROM ${db} WHERE ${key} = '${identifier}'`;
 		return {
 			query,
 			db,
