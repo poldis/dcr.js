@@ -12,7 +12,7 @@ export class DcrCache {
 				'Invalid parameters passed to DcrCache constructor'
 			);
 		this.redis = redis;
-		this.db = db;
+		this.pool = db;
 
 		this.get = get.bind(this);
 		this.set = set.bind(this);
@@ -20,7 +20,7 @@ export class DcrCache {
 	}
 
 	public redis: Redis;
-	public db: Pool;
+	public pool: Pool;
 
 	public get:
 		| ((

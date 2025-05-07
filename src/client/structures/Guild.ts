@@ -30,7 +30,7 @@ export default class Guild {
 
 	public async cmdUsed(cmdName: string): Promise<void> {
 		await this.increaseCmdCount();
-		await this.cache.db.query(
+		await this.cache.pool.query(
 			`UPDATE stats SET uses = uses + 1 WHERE cmd = '${cmdName}'`
 		);
 	}

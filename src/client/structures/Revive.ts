@@ -30,7 +30,7 @@ export default class Revive {
 	public lastMsgTime: string;
 
 	public async reviveSent(): Promise<DbRevive | null> {
-		await this.cache.db.query(
+		await this.cache.pool.query(
 			`UPDATE stats SET uses = uses + 1 WHERE cmd = 'reviveMsgs'`
 		);
 		const data: DbGuild = await this.cache.get('guild', this.guildId);

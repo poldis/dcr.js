@@ -16,7 +16,7 @@ export default async function del(
 		await this.redis.del(`${type}_${identifier}`);
 
 	const { db, key } = this.getQuery(type, identifier, false, false);
-	await this.db.query(`DELETE FROM ${db} WHERE ${key} = '${identifier}'`);
+	await this.pool.query(`DELETE FROM ${db} WHERE ${key} = '${identifier}'`);
 
 	return true;
 }

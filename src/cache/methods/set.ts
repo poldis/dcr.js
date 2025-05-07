@@ -7,7 +7,7 @@ export default async function (
 	params: Array<string> = []
 ): Promise<any> {
 	// eslint-disable-line @typescript-eslint/no-explicit-any
-	await this.db.query(query, params).catch((err: MysqlError) => {
+	await this.pool.query(query, params).catch((err: MysqlError) => {
 		console.error(err);
 	});
 

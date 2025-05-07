@@ -1,11 +1,11 @@
 import { getOptions } from '../../client/structures/types/others';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function (
 	type: string,
 	identifier: number | string,
 	options: getOptions
 ): Promise<any> {
+	// eslint-disable-line @typescript-eslint/no-explicit-any
 	if (!options)
 		options = {
 			update: true,
@@ -28,7 +28,7 @@ export default async function (
 	if (!query || query.query.length <= 0)
 		throw new Error('Invalid type passed to cache.get(): ' + type);
 
-	const dbRes = await this.db.query(query.query);
+	const [dbRes] = await this.pool.query(query.query);
 	if (!dbRes || dbRes.length <= 0) return null;
 
 	if (update)
