@@ -28,7 +28,7 @@ export default async function (
 	if (!query || query.query.length <= 0)
 		throw new Error('Invalid type passed to cache.get(): ' + type);
 
-	const [dbRes] = await this.pool.query(query.query);
+	const dbRes = await this.pool.query(query.query);
 	if (!dbRes || dbRes.length <= 0) return null;
 
 	if (update)
