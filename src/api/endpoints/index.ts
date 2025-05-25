@@ -37,7 +37,7 @@ export class DcrApiEndpoints {
 		return await fetch(this.ENDPOINTS_API_URL + endpoint, {
 			method: options?.method || 'GET',
 			headers: options.headers,
-			body: options?.body ? JSON.stringify(options.body) : undefined,
+			body: options?.body || undefined,
 		});
 	}
 }

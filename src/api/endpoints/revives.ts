@@ -53,7 +53,7 @@ export default class ApiRevives {
 		return await fetch(this.ENDPOINTS_API_URL + endpoint, {
 			method: options?.method || 'GET',
 			headers: options.headers,
-			body: options?.body,
+			body: options?.body || undefined,
 		});
 	}
 }
