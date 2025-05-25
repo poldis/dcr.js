@@ -1,6 +1,6 @@
 {
 	"name": "dcr.js",
-	"version": "1.0.22",
+	"version": "1.0.23",
 	"description": "A Wrapper for the DCR API, DB & Cache",
 	"main": "dist/index.js",
 	"author": "Leopold Scharlach",
